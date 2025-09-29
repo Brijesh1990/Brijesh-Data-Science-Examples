@@ -1,0 +1,52 @@
+SQL: Structured Query Language
+MYSQL-database
+Query
+DBMS-Database Management System
+RDBMS - Relational Database Management System
+Software - XAMPP-8.0.30
+
+Apache is a one Server
+MYSQL - DB
+
+Localhost - Server
+
+WAMP
+W => Windows
+A => Apache
+M => MYSQL
+P => php
+
+LAMP
+L => Linux
+A => Apache
+M => MYSQL
+P => php
+
+MAMP
+M => Mac
+A => Apache
+M => MYSQL
+P => php
+
+XAMPP
+X => Cross Platform
+A => Apache
+M => MYSQL
+P => php
+P => perl
+
+
+
+Types of Commands in MYSQL
+
+1)DDL : data definitional language
+-> create,alter,drop,truncate,rename
+
+2)DML : data manipulation language
+-> insert,update,delete
+
+3)DQL : data query language
+-> select
+
+4)DCL : data control language
+-> rollback,commit

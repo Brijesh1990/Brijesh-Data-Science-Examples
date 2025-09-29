@@ -1,0 +1,23 @@
+Agreegate Functions:
+
+
+
+Scalar Functions:
+
+1. SELECT UCASE(NAME) FROM Students;
+2. SELECT LCASE(NAME) FROM Students;
+3. SELECT MID(NAME,1,4) FROM Students; 
+4. SELECT LENGTH(NAME) FROM Stuents; 
+5. SELECT ROUND(MARKS,0) FROM table_name;
+6. SELECT NAME, NOW() AS DateTime FROM Students;
+7. SELECT NAME, FORMAT(Now(),'YYYY-MM-DD') AS Date FROM Students;
+
+DELIMITER //
+
+	CREATE PROCEDURE selectorder(INOUT myid int)
+    
+    BEGIN
+    	SELECT * FROM info ORDER by name DESC;
+    END //
+
+DELIMITER ;
