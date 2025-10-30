@@ -1,0 +1,27 @@
+DQL
+15. select all
+select * from tablenm
+
+16. particular column dispaly
+SELECT columnnm from tablenm
+
+17. particular row display
+select * from tablenm where id='id' 
+
+18.order by
+select colnm from tblnm order by colnm asc/desc
+
+JOINS:
+1)INNER JOIN:
+SELECT * FROM category_images JOIN category on category_images.id = category.id
+
+2)LEFT JOIN:
+SELECT * FROM category_images LEFT JOIN category on category_images.id = category.id
+
+3)RIGHT JOIN:
+SELECT * FROM category_images RIGHT JOIN category on category_images.id = category.id
+
+4)FULL JOIN:
+SELECT * FROM category_images LEFt JOIN category on category_images.id = category.id
+UNION
+SELECT * FROM category_images RIGHT JOIN category on category_images.id = category.id

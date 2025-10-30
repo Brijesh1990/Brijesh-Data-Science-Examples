@@ -1,0 +1,326 @@
+what is SQL ?
+SQL stands for structured query language
+SQL is used for create a database and table structured 
+SQL is a case-insenstive 
+examples : INsert or insert or INSERT 
+
+SQL is used to create some commands...
+
+types of sql commands......
+
+a) DDL  (data definition language)
+b) DML  (data manupulation langugae)
+c) DQL  (data query language)
+d) TCL  (transaction query language)
+
+
+what is DDL ?
+DDl stands for data definition language 
+
+examples :  create | alter | drop | truncate | rename | change
+
+1) how to create a database in SQL ?
+ex: create database flipkcartapp;
+
+2) how to create a table in SQL ?
+
+table chart 
+
+fieldname (datatype size)                 key constriants               
+id int                                    not null
+name char or varchar(0-255)
+email char or varchar(0-255)
+phone  bigint 
+address text
+message text
+date     date 
+date-time date-time
+salary   int, float 
+
+
+syntax :  
+
+create table tablename (
+
+columnname datatype(size) auto_increment primary key,
+columnname ....
+)     
+
+examples : 
+create table tbl_employee(
+empid int AUTO_INCREMENT PRIMARY key,
+name varchar(100),   
+email varchar(255),
+password varchar(255),
+gender varchar(255),
+hobby varchar(255)    
+
+)
+
+create table tbl_contact(
+contactid int AUTO_INCREMENT PRIMARY key,
+name varchar(100),   
+email varchar(255),
+phone bigint,
+subject varchar(255),    
+message text    
+)
+
+
+
+3) alter :alter is used to add | modify | change a column name  in tables  
+add column name : 
+
+alter table tbl_contact add  country varchar(255);
+alter table tbl_contact add  upload_photo varchar(255) after name;
+
+modify or change column name ...
+
+alter table tbl_contact change upload_photo photo varchar(255);
+
+set a unique key ...
+ALTER TABLE `tbl_contact` ADD UNIQUE(`email`);
+
+4) change :
+alter table tbl_contact change upload_photo photo varchar(255);
+
+5) drop :
+   drop is used to delete a structured of database and tables structures
+
+   Note : after drop we can not recover or rollback data and structures 
+
+   1) drop database databasename;
+   2) drop table tablename;
+
+
+
+6) rename : rename is used to rename the tables 
+
+           a) rename table tbl_contact to contact;
+           b) rename table tbl_employee to employee;
+
+
+7) truncate : truncate is used to delete all data or empty all data from tables 
+
+         example : truncate table tbl_contact;
+
+         Note : after truncate we can not rollback a data 
+
+
+2) DML  : dml stands for data manupulation language 
+          1) insert 
+          2) delete 
+          3) update    
+
+
+          1) how to insert data
+
+             a) insert into employee(name,email,password,gender,hobby) values('brijesh','b@gmail.com','b21454','male','read,write');
+
+
+             b) insert into employee values('null','brijesh','b@gmail.com','b21454','male','read,write'),('null','rajesh','r@gmail.com','b21454','male','read,write'),('null','mitesh','m@gmail.com','b21454','male','read,write'),('null','nehal','n@gmail.com','b21454','male','read,write');
+
+
+          2) delete : delete is used to delete rows or data from tables after elete we can rollback data
+
+             a) delete from employee;
+             b) delete from employee where empid=1;
+             b) delete from employee where name='rajesh';
+             c) delete from employee where empid in(1,3,5);
+             b) delete from employee where empid between 1 and 3;      
+
+
+           3) update data or rows from tables 
+
+              a) update employee set name='lokesh',email='lokesh@gmail.com' where empid=4;   
+
+
+3) DQL  : DQL stands for data query language
+          examples : select 
+
+
+           1) select * from employee;
+           2) select * from employee  where empid=4;
+           3) select * from employee  where name='lokesh';
+           4) select * from employee  where email='lokesh@gmail.com';
+           5) select empid,name,email from  employee  where empid=4;
+           6) select empid,name,email from  employee  where empid=4;
+           7) select * from employee where empid between 4 and 8; 
+
+
+           Order by and group by ....
+
+           Order by : filter data or select data in asc and desc order.
+       
+                       Asc ...
+
+                       a)select * from employee order by name asc;
+                         select * from employee order by name;
+                       desc...
+
+                       b)select * from employee order by name desc;
+                      
+
+           Group by : filter data on group of columns 
+
+                       a)  select sum(salary) as sumof_slaary from users group by department;
+                       b)  select sum(salary) as sumof_slaary, department from users group by department;   
+
+           
+
+
+sql function : sql function is used to provides 
+               a) aggrigate function
+                  
+                    1) max 2) min 3) avg 4) count    
+               
+               b) scalar function    
+
+                  1) first  2) last 3)lcase 4)ucase
+
+ 
+               1) select max(salary) as max_salary from users;
+               2) select min(salary) as max_salary from users; 
+               3) select max(salary) as max_salary from users;  
+               4) select avg(salary) as max_salary from users;
+               5) select count(uid) as total_users from users;
+               6) select first(name)  from users;
+               7) select last(name)  from users;   
+               8) select ucase(name)  from users;
+               9) select lcase(name)  from users;
+
+
+subquery : sql provides query withing another query i.e called subquery
+
+             examples :select max(salary) as second_highest_salary from  users where salary < (select max(salary) from users)
+
+
+like operator .........like is used for searching the pattern or wild card pattern 
+
+ a) select * from users where name like 'b%';
+ b) select * from users where name like '%h';
+ c) select * from users where name like '%a%';
+
+
+TCL : stands for trsnsaction control language
+      we can commit and rollback using TCL 
+
+      a) commit 
+      b) rollback  
+     
+      commit : commit is used to save data before deleted
+               START TRANSACTION;
+               delete from users where uid=4;
+               commit;
+    
+         
+      rollback : rollback is used to recover data after delete
+                      
+                  START TRANSACTION;
+                  select * from users where uid=4;
+                  rollback;
+
+ Note: commit and rollback is not supported in mysql 
+
+
+      SQL constriants : sql key consterints provide a lit on sql table
+
+                        Types of sql constraints ...
+
+                        a) primary key
+                        b) foreign key
+                        c) unique key
+                        d) compund key
+
+        
+
+      primary key:A pk never return a null values 
+                  A pk only provides one times in a tables 
+                  A pk is always auto_increment.
+
+                  users
+
+              uid(pk)    name     email    password  
+     
+      
+      foreign key:A fk never retun null values 
+                  A fk will provides more than once time in a tables 
+                  A fk is provides relationship between one tables to another tables 
+
+                     users
+
+              uid(pk)    name     email    password  cid(fk)  sid(fk)  ctid(fk)
+      
+                      country
+
+              cid(pk)   cname 
+                 1        india       
+
+                      state
+
+              sid(pk)  statename  cid(fk)
+                1        gujrat     1    
+
+                       city
+
+              ctid(pk)     cityname   sid(fk) 
+               1            rajkot      1        
+
+          How to create a FK....
+
+       create table products
+(
+ pid int AUTO_INCREMENT primary key,   
+ catid int,   
+ FOREIGN key(catid) REFERENCES category(catid),   
+ subcatid int,
+FOREIGN key(subcatid) REFERENCES subcategory(subcatid),  
+ pname varchar(255),
+ photo varchar(255),
+ price int,
+ qty int,
+ descriptions  text
+   
+)
+                    
+unique key :
+    A uk is does not return a dublicate key 
+
+   examples :ALTER TABLE `tbl_contact` ADD UNIQUE(`email`);        
+
+compund key: coumpund key is used to provides just like unique key   
+
+
+SQL Joins......
+
+          sql join is used to join more than one tables with common fiel if data matched join tables
+  
+
+          types of sql join ...
+
+          a) inner join 
+          b) join 
+          c) outer join 
+                  1) left join
+                  2) right join 
+                  3) full join    
+          d) cross join                 
+
+
+ 
+join :: 
+
+1) select  products.*,catname,subcatname from products join category on products.catid=category.catid join subcategory on products.subcatid=subcategory.subcatid;
+
+or
+
+select  pid,pname,photo,price, qty, descriptions,catname,subcatname from products join category on products.catid=category.catid join subcategory on products.subcatid=subcategory.subcatid;
+
+
+
+
+                        
+             
+             
+ 
+         
